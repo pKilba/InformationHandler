@@ -1,5 +1,9 @@
 package service.reader.impl;
 
+import exceptions.ClosingStreamException;
+import exceptions.InputStreamFileException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import service.reader.TextReader;
 
 import java.io.CharArrayWriter;
@@ -7,13 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileTextReader implements TextReader {
+
+    private static final Logger logger = LogManager.getLogger();
+
     @Override
-    //know I could work with BufferedReader or just use Java 8,
-    //but I want to read all characters at once (i mean \r\n)
-    public String read(String filePath) //throws TextReaderException
-    {
-        filePath = "D://123.txt";
-       // LOGGER.info("Reading text from " + filePath + " file...");
+    public String read(String filePath) throws InputStreamFileException, ClosingStreamException {
         FileReader fileReader = null;
         CharArrayWriter charArray = new CharArrayWriter();
         try {
@@ -25,20 +27,19 @@ public class FileTextReader implements TextReader {
                 charArray.write(charBuffer, 0, currentCharsAmount);
             }
         } catch (IOException e) {
-           // throw new TextReaderException("Something wrong with file text reading.", e);
+            logger.error("Непредвиденная ошибка при считки файла");
+            throw new InputStreamFileException();
+
         } finally {
             if (fileReader != null) {
                 try {
                     fileReader.close();
                 } catch (IOException e) {
-                  //  LOGGER.error(e.getMessage(), e);
+                    logger.error("Ошибка при закрытии потока");
+                    throw new ClosingStreamException();
                 }
             }
         }
-
-
-        System.out.println(charArray);
-        //LOGGER.info("Text has been read!");
 
         return charArray.toString();
     }

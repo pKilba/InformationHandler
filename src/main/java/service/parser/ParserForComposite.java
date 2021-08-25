@@ -1,7 +1,7 @@
 package service.parser;
 
 
-import model.ComponentType;
+import entity.ComponentType;
 import controller.impl.TextComposite;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ParserForComposite {
         TextComposite textComposite = new TextComposite(type);
         List<TextComposite> subComponents = matchSubComponents(text, type.getRegexForSplit());
         textComposite.addChildren(subComponents);
-        textComposite.value = text;
+        textComposite.setValue(text);
         return textComposite;
     }
 
@@ -40,7 +40,7 @@ public class ParserForComposite {
             ComponentParser nextParser = getNextParser();
             String matchedData = matcher.group();
             TextComposite textComponent = nextParser.parse(matchedData);
-            textComponent.value=matchedData;
+            textComponent.setValue(matchedData);
             subComponents.add(textComponent);
         }
         return subComponents;

@@ -1,20 +1,18 @@
-package model;
+package entity;
 
 public enum ComponentType {
     TEXT,
     PARAGRAPH,
     SENTENCE,
-    WORD,
-    SYMBOL;
+    WORD;
 
     private String RegexForSplit;
 
     static {
         TEXT.RegexForSplit = "[^\n]+\n?";
-        PARAGRAPH.RegexForSplit = "[^!?.]+[!?.](\\.{2})?([^\\n\\w]*\\n)?";//парсит на предложения
+        PARAGRAPH.RegexForSplit = "[^!?.]+[!?.](\\.{2})?([^\\n\\w]*\\n)?";//PARSING ON SENTENCE
         SENTENCE.RegexForSplit = "\\[[^]\\[]*]|[^ \\[\\]]+\n?";
-        WORD.RegexForSplit = ".";
-        SYMBOL.RegexForSplit = ".";
+        WORD.RegexForSplit = "\\w+";
     }
 
     public String getRegexForSplit() {

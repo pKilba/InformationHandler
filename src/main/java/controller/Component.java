@@ -1,16 +1,16 @@
 package controller;
 
 import controller.impl.TextComposite;
-import model.ComponentType;
+import entity.ComponentType;
 
 import java.util.List;
 
-public interface TextComponent {
+public interface Component {
     ComponentType getType();
 
-    void removeElement(TextComponent part);
+    void removeElement(Component part);
 
-    TextComponent getElement(int index);
+    Component getElement(int index);
 
     void addElement(TextComposite part);
 

@@ -1,14 +1,14 @@
 package controller.impl;
 
-import controller.TextComponent;
-import model.ComponentType;
+import controller.Component;
+import entity.ComponentType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Composite implements TextComponent {
-    public List<TextComposite> textComponents = new ArrayList<>();
-    public ComponentType type;
+public class Composite implements Component {
+    private List<TextComposite> textComponents = new ArrayList<>();
+    private ComponentType type;
 
 
     public Composite(ComponentType type) {
@@ -22,12 +22,12 @@ public class Composite implements TextComponent {
     }
 
     @Override
-    public void removeElement(TextComponent part) {
+    public void removeElement(Component part) {
         textComponents.remove(part);
     }
 
     @Override
-    public TextComponent getElement(int index) {
+    public Component getElement(int index) {
         return textComponents.get(index);
     }
 

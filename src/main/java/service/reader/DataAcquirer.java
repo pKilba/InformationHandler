@@ -7,6 +7,7 @@ import exceptions.UnsuitableRangeValueException;
 import java.io.IOException;
 
 public interface DataAcquirer {
- String getFilePath();
- int getNumberForSelectTask() throws IOException, UnsuitableRangeValueException, InputStreamConsoleException, InputDataTypeException;
+    String getFilePath() throws InputStreamConsoleException;
+
+
 }
