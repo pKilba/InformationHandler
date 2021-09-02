@@ -3,9 +3,6 @@ package com.epam.hadler.logic;
 import com.epam.hadler.controller.impl.TextComposite;
 import com.epam.hadler.exceptions.InCorrectTypeCompositeException;
 import com.epam.hadler.validator.ValidatorByCompositeType;
-
-
-
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
@@ -23,7 +20,6 @@ public class Calculator {
 
     //task2
     public List<TextComposite> sortSentencesByWord(TextComposite textComposite) throws InCorrectTypeCompositeException {
-
         validator.isCorrectTextType(textComposite);
         List<TextComposite> list = new ArrayList<TextComposite>();
         for (TextComposite paragraph : textComposite.getChildren()) {
@@ -42,7 +38,6 @@ public class Calculator {
 
 
     //task6
-
     public List sortByFirstLetter(TextComposite textComposite) throws InCorrectTypeCompositeException {
         validator.isCorrectTextType(textComposite);
         Map<Character, Integer> map = new HashMap<>();
@@ -93,10 +88,7 @@ public class Calculator {
                     return count;
                 }
             };
-
-
         });
-
     }
 
     //task1
