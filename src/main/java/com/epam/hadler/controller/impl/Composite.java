@@ -2,14 +2,12 @@ package com.epam.hadler.controller.impl;
 
 import com.epam.hadler.controller.Component;
 import com.epam.hadler.entity.ComponentType;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Composite implements Component {
     private List<TextComposite> textComponents = new ArrayList<>();
     private ComponentType type;
-
 
     public Composite(ComponentType type) {
         this.type = type;
@@ -18,7 +16,6 @@ public class Composite implements Component {
     @Override
     public void addElement(TextComposite part) {
         textComponents.add(part);
-
     }
 
     @Override
